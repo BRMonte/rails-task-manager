@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    @task = task.all
+    @tasks = Task.all #@taskS because it is an array of tasks objects
   end
 
   def show
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new
+    @task = Task.new(params[:id])
     @task.save
   end
 
@@ -23,10 +23,11 @@ class TasksController < ApplicationController
 
   def uptade
     @task = Task.find(params[:id])
-    @task.update
+    @task.update(params[:id])
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
   end
 
@@ -35,5 +36,5 @@ end
 private
 
 def task_params
-  params.require(:task).permit(:title, :detail, :completed)
+  params.require(:task).permit(:title, :details, :completed)
 end

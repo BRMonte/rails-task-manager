@@ -1,6 +1,9 @@
-<form action="task[new]">
-  <input type="text" name="task[title]" value="Title">
-  <input type="text" name="task[detail]" value="Detail">
-  <input type="text" name="task[completed]" value="Completed">
-  <input type="submit">
-</form>
+<%= form_for @task do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+
+  <%= f.label :details %>:
+  <%= f.text_field :details %><br />
+
+  <%= f.submit %>
+<% end %>
